@@ -237,7 +237,6 @@ Contribution guidelines:
 
 ## License
 
-```
 All data sources in OpenCVL and this toolkit are generally open-source and have permissible licenses. Please find below an overview:
 
 This toolkit: MIT License. See here [MIT License](https://opensource.org/license/MIT)
@@ -247,10 +246,6 @@ Norway Aerial Imagery:
 Sweden Aerial Imagery:
 Poland Aerial Imagery
 Netherlands Aerial Imagery: 
-
-```
-
----
 
 ## Acknowledgements
 
