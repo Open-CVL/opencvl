@@ -266,6 +266,8 @@ OpenCVL is developed by researchers from:
 ---
 
 ## Contact
+For questions related to Aerial imagery, please contact Zimin Xia (zimin.xia at epfl dot ch).
 
-Zimin Xia (zimin.xia at epfl dot ch)
-Mubariz Zaffar (m.zaffar at tudelft dot nl)
+For questions related to Mapillary imagery and the pose correction pipeline, please get in touch with Mubariz Zaffar (m.zaffar at tudelft dot nl).
+
+For general questions, please contact either of us.
