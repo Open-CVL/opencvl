@@ -238,6 +238,15 @@ Contribution guidelines:
 ## License
 
 ```
+All data sources in OpenCVL and this toolkit are generally open-source and have permissible licenses. Please find below an overview:
+
+This toolkit: MIT License. See here [MIT License](https://opensource.org/license/MIT)
+Mapillary: CC BY SA. See here [Mapillary license](https://help.mapillary.com/hc/en-us/articles/115001770409-CC-BY-SA-license-for-open-data)
+ZOD: CC BY SA. See here [ZOD license](https://github.com/zenseact/zod)
+Norway Aerial Imagery:
+Sweden Aerial Imagery:
+Poland Aerial Imagery
+Netherlands Aerial Imagery: 
 
 ```
 
@@ -258,5 +267,3 @@ OpenCVL is developed by researchers from:
 
 Zimin Xia (zimin.xia at epfl dot ch)
 Mubariz Zaffar (m.zaffar at tudelft dot nl)
-
-```
