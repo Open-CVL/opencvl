@@ -1,273 +1,73 @@
-# OpenCVL Developer Tools
+# OpenCVL Devkit
 
-Developer tools and utilities for working with **OpenCVL: An Open, Diverse, and Large-Scale Dataset for Fine-Grained Cross-View Localization**.
+OpenCVL Devkit provides Python tools for preparing, splitting, watermarking,
+and visualizing the OpenCVL cross-view localization dataset.
 
-OpenCVL is a large-scale dataset designed for cross-view localization research, providing aligned ground-level and aerial imagery across diverse geographic regions. This repository contains tools for accessing, preparing, processing, and evaluating OpenCVL data.
+## Requirements
 
-Project website:
-
-https://open-cvl.github.io/
-
----
-
-## Overview
-
-Cross-view localization aims to determine the geographic location of a ground-level image by matching it with aerial or satellite imagery.
-
-OpenCVL provides a large-scale benchmark for this task with:
-
-- 617,388 ground–aerial image pairs
-- Coverage across 4 countries
-- Coverage across 41 cities
-- More than 7,000 km² of geographic area
-
-The dataset includes diverse environments, viewpoints, and capture conditions to support research in fine-grained localization.
-
----
-
-## Features
-
-This repository provides tools for:
-
-- Mapillary imagery downloading
-- Our novel pose correction pipeline for Mapillary images 
-- Aerial imagery downloading
-- Visualization tools
-- Ground/aerial image pair handling
-- Data preprocessing
-
----
-
-## Dataset Information
-
-### Geographic Coverage
-
-| Country | Image Pairs |
-|----------|-------------|
-| Sweden | 327,647 |
-| Netherlands | 93,062 |
-| Poland | 147,173 |
-| Norway | 49,506 |
-
----
-
-## Installation
-
-### Requirements
-
-See accompanying requirements.txt for the respective features.
-
-
-
-## Getting Started
-
-### Download Dataset
+- Python 3.10 or newer
+- Pillow for image loading, watermarking, and visualization
 
 ```bash
-
+python3 -m pip install "Pillow>=9.2"
 ```
 
-### Prepare Dataset
+## Register, download, and prepare archives
+
+Register for dataset access at <https://open-cvl.github.io/access.html>, then
+download all `.tar` archives and `SHA256SUMS` from the page shown after
+registration. Place the downloaded files together in one directory.
+
+Check that the complete archive set is present, verify every file, and extract
+the dataset:
 
 ```bash
-
+python3 scripts/prepare_dataset.py /path/to/downloaded_archives \
+  --output /path/to/OpenCVL
 ```
 
-### Run Example
+## Create official splits
+
+Generate every benchmark manifest from the distributed `labels.json` files:
 
 ```bash
-
+python3 scripts/create_splits.py /path/to/OpenCVL \
+  --output /path/to/OpenCVL_splits
 ```
 
----
+| File | Official split | OpenCVL v1 samples |
+| --- | --- | ---: |
+| `train.jsonl` | ZOD train + Mapillary cities | 579,752 |
+| `val.jsonl` | ZOD validation | 14,756 |
+| `test_cross_area.jsonl` | ZOD cross-area test | 18,504 |
+| `test_snow.jsonl` | ZOD snowy test | 3,015 |
+| `test_in_the_wild.jsonl` | Mapillary in-the-wild test | 1,361 |
 
-## Repository Structure
+## Add source watermarks
+
+If you display OpenCVL images in figures, slides, websites, or demos, we
+recommend attributing the image source. This script creates attributed image
+copies without modifying the original dataset.
+
+```bash
+python3 scripts/add_watermarks.py /path/to/OpenCVL \
+  --ground-image 000023_uniform_2022-05-18T07:05:25.907107Z.png \
+  --output /path/to/OpenCVL_watermarked
+```
+
+## Plot GT pose
+
+The OpenCVL pose convention is:
 
 ```text
-OpenCVL/
-├── datasets/          # Dataset loading and processing
-├── tools/             # Developer utilities
-├── scripts/           # Training and evaluation scripts
-├── configs/           # Configuration files
-├── examples/          # Example usage
-└── README.md
+ground_x = aerial_width  / 2 + dx
+ground_y = aerial_height / 2 - dy
 ```
 
----
-
-## Data Format
-
-Each dataset sample contains:
-
-```text
-sample/
-├── ground_image
-├── aerial_image
-├── metadata
-└── location_information
-```
-
-Additional format details:
-
-```
-
-```
-
----
-
-## Development Tools
-
-### Dataset Downloader
-
-Description:
-
-```
-
-```
-
-Usage:
+Heading is in degrees, with `0` pointing north/up.
 
 ```bash
-
+python3 scripts/plot_sample.py /path/to/OpenCVL \
+  --ground-image 000023_uniform_2022-05-18T07:05:25.907107Z.png \
+  --output ground_aerial_gt.png
 ```
-
----
-
-### Dataset Converter
-
-Description:
-
-```
-
-```
-
-Usage:
-
-```bash
-
-```
-
----
-
-### Visualization Tools
-
-Description:
-
-```
-
-```
-
-Usage:
-
-```bash
-
-```
-
----
-
-## Training
-
-Example training command:
-
-```bash
-
-```
-
----
-
-## Evaluation
-
-Example evaluation command:
-
-```bash
-
-```
-
-Evaluation metrics:
-
-```
-
-```
-
----
-
-## Documentation
-
-Documentation:
-
-```
-
-```
-
----
-
-## Citation
-
-If you use OpenCVL in your research, please cite:
-
-```
-@inproceedings{opencvl2026,
-  title = {OpenCVL: An Open, Diverse, and Large-Scale Dataset for Fine-Grained Cross-View Localization},
-  author = {Xia, Zimin and Zaffar, Mubariz and Fu, Junsheng and Alahi, Alexandre and Kooij, Julian F. P.},
-  booktitle = {European Conference on Computer Vision},
-  year = {2026}
-}
-```
-
----
-
-## Contributing
-
-Contributions are welcome.
-
-Please submit issues or pull requests for:
-
-- Bug fixes
-- Documentation improvements
-- New utilities
-- Dataset tooling improvements
-
-Contribution guidelines:
-
-```
-
-```
-
----
-
-## License
-
-All data sources in OpenCVL and this toolkit are generally open-source and have permissible licenses. Please find below an overview:
-
-This toolkit: MIT License. See here [MIT License](https://opensource.org/license/MIT)
-
-Mapillary: CC BY SA. See here [Mapillary license](https://help.mapillary.com/hc/en-us/articles/115001770409-CC-BY-SA-license-for-open-data)
-
-ZOD: CC BY SA. See here [ZOD license](https://github.com/zenseact/zod)
-
-Norway Aerial Imagery:
-
-Sweden Aerial Imagery:
-
-Poland Aerial Imagery:
-
-Netherlands Aerial Imagery: 
-
-
-## Acknowledgements
-
-OpenCVL is developed by researchers from:
-
-- École Polytechnique Fédérale de Lausanne (EPFL)
-- Delft University of Technology (TU Delft)
-- Southern University of Science and Technology (SUSTech)
-- Zenseact
-
----
-
-## Contact
-For questions related to Aerial imagery, please contact Zimin Xia (zimin.xia at epfl dot ch).
-
-For questions related to Mapillary imagery and the pose correction pipeline, please get in touch with Mubariz Zaffar (m.zaffar at tudelft dot nl).
-
-For general questions, please contact either of us.

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+*.tar
+OpenCVL/
+OpenCVL_splits/
+OpenCVL_watermarked/
