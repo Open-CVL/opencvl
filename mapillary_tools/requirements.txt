@@ -1,0 +1,10 @@
+h5py>=3.10,<4
+mapillary==1.0.15
+numpy>=1.26,<2
+opencv-python>=4.9,<5
+Pillow>=9.4,<12
+pycolmap==4.1.1
+requests>=2.31,<3
+scipy>=1.11,<2
+utm>=0.8,<1
+zod[cli]==0.8.0
