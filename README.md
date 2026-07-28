@@ -97,7 +97,7 @@ for this in the accompanying `mapillary_tools\`.
 
 ## Correct your own Mapillary imagery
 The Python implementation of our Mapillary pose correction pipeline is provided in the 
-accompanying `mapillary_tools\`. Please see the corresponding detailed [README](mapillary_tools/README.md) on that.
+accompanying `mapillary_tools/`. Please see the corresponding detailed [README](mapillary_tools/README.md) on that.
 
 [Watch the full demo video](https://drive.google.com/file/d/1rjW6OQ2pGdxlhhzJEJ_TkIlP_bkHywxG/view?usp=sharing) 
 of the Mapillary pose correction pipeline in action. 
