@@ -96,8 +96,8 @@ Useful options:
 --radius METRES              Mapillary search radius (default: 5)
 --max-candidates N           Maximum nearby images to evaluate (default: 8)
 --top-match-percent PERCENT  Best MASt3R matches retained (default: 85)
---min-lidar-matches N        LiDAR-backed quality gate (default: 200)
---min-colmap-inliers N       COLMAP quality gate (default: 100)
+--min-lidar-matches N        LiDAR-backed quality gate (default: 400)
+--min-colmap-inliers N       COLMAP quality gate (default: 250)
 --device DEVICE              auto, cpu, cuda, or cuda:N
 ```
 
@@ -167,26 +167,9 @@ opencvl_pose/
 └── zod_data.py        ZOD image, LiDAR, calibration, and OXTS loading
 ```
 
-## Validation
-
-The unit tests cover the dependency-free geometry at the center of the method:
-
-```bash
-python -m pip install -r requirements.txt
-python -m pip install "pytest>=8,<9" "ruff>=0.6,<1"
-ruff check opencvl_pose tests run_pose_correction.py
-pytest
-```
-
-An actual end-to-end run additionally requires the ZOD data, a Mapillary token,
-MASt3R source, its model checkpoint, and substantial compute.
-
 ## Licenses and responsible release
 
 The wrapper code in this repository is MIT-licensed. MASt3R is CC BY-NC-SA 4.0
 and its checkpoints have additional restrictions. ZOD and Mapillary imagery
-also retain their own terms. Read [NOTICE.md](NOTICE.md) before redistribution
+also retain their own terms. Read [NOTICE.md](../NOTICE.md) before redistribution
 or use.
-
-Do not commit `.env`, downloaded imagery, ZOD files, model checkpoints, or
-generated outputs. Add the associated paper citation before the public release.

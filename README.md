@@ -4,6 +4,19 @@ OpenCVL Devkit provides Python tools for preparing, splitting, watermarking,
 and visualizing the OpenCVL cross-view localization dataset. See the correponding
 `opencvl_tools/`. 
 
+Tools related to Mapillary downloading and correction are also provided in `mapillary_tools/`. 
+See the corresponding [README](mapillary_tools/README.md).
+
+## Features
+
+This repository provides tools for:
+
+- Registering, downloading, and prepare archives of the OpenCVL dataset (`opencvl_tools/`)
+- Aerial imagery downloading codes (`opencvl_tools/`)
+- Mapillary imagery downloading toolkit (`mapillary_tools/`)
+- Implementation of our novel pose correction pipeline for Mapillary images (`mapillary_tools/`)
+- Visualization tools (`opencvl_tools/` and `mapillary_tools/`)
+
 ## Requirements for OpenCVL tools
 
 - Python 3.10 or newer
@@ -13,18 +26,7 @@ and visualizing the OpenCVL cross-view localization dataset. See the correpondin
 python3 -m pip install "Pillow>=9.2"
 ```
 
-## Features
-
-This repository provides tools for:
-
-- Registering, downloading, and prepare archives of the OpenCVL dataset
-- Mapillary imagery downloading toolkit
-- Implementation of our novel pose correction pipeline for Mapillary images 
-- Aerial imagery downloading codes
-- Visualization tools
-
-
-## Register, download, and prepare archives
+## Register, download, and prepare archives of the OpenCVL dataset
 
 Register for dataset access at <https://open-cvl.github.io/access.html>, then
 download all `.tar` archives and `SHA256SUMS` from the page shown after
@@ -38,7 +40,7 @@ python3 scripts/prepare_dataset.py /path/to/downloaded_archives \
   --output /path/to/OpenCVL
 ```
 
-## Create official splits
+## Create official splits of OpenCVL
 
 Generate every benchmark manifest from the distributed `labels.json` files:
 
@@ -55,7 +57,7 @@ python3 scripts/create_splits.py /path/to/OpenCVL \
 | `test_snow.jsonl` | ZOD snowy test | 3,015 |
 | `test_in_the_wild.jsonl` | Mapillary in-the-wild test | 1,361 |
 
-## Add source watermarks
+## Add source watermarks to OpenCVL images [Optional but recommended]
 
 If you display OpenCVL images in figures, slides, websites, or demos, we
 recommend attributing the image source. This script creates attributed image
@@ -86,14 +88,23 @@ python3 scripts/plot_sample.py /path/to/OpenCVL \
 
 ## Download your own Mapillary imagery
 
+We have provided codes to retrieve Mapillary imagery and associated metadata
+that we found useful for this research.
 Please see the [Python code](mapillary_tools/mapillary_downloader.py) 
-and [Jupyer Notebook](mapillary_tools/mapillary_downloader_nb.ipynb) 
-for this in the accompanying `mapillary_tools`.
+and [Jupyter Notebook](mapillary_tools/mapillary_downloader_nb.ipynb) 
+for this in the accompanying `mapillary_tools\`.
 
 
 ## Correct your own Mapillary imagery
-We have provided implementation of our pose correction pipeline in 
-accompanying Mapillary Tools. See the corresponding [README](mapillary_tools/README.md).
+The Python implementation of our Mapillary pose correction pipeline is provided in the 
+accompanying `mapillary_tools\`. Please see the corresponding detailed [README](mapillary_tools/README.md) on that.
+
+[Watch the full demo video](https://drive.google.com/file/d/1rjW6OQ2pGdxlhhzJEJ_TkIlP_bkHywxG/view?usp=sharing) 
+of the Mapillary pose correction pipeline in action. 
+A quick visualization is given below:
+
+![Demo](mapillary_tools/pose_improvement_visualization.gif)
+
 
 ## Acknowledgements
 
