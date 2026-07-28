@@ -1,9 +1,10 @@
 # OpenCVL Devkit
 
 OpenCVL Devkit provides Python tools for preparing, splitting, watermarking,
-and visualizing the OpenCVL cross-view localization dataset.
+and visualizing the OpenCVL cross-view localization dataset. See the correponding
+`opencvl_tools/`. 
 
-## Requirements
+## Requirements for OpenCVL tools
 
 - Python 3.10 or newer
 - Pillow for image loading, watermarking, and visualization
@@ -11,6 +12,17 @@ and visualizing the OpenCVL cross-view localization dataset.
 ```bash
 python3 -m pip install "Pillow>=9.2"
 ```
+
+## Features
+
+This repository provides tools for:
+
+- Registering, downloading, and prepare archives of the OpenCVL dataset
+- Mapillary imagery downloading toolkit
+- Implementation of our novel pose correction pipeline for Mapillary images 
+- Aerial imagery downloading codes
+- Visualization tools
+
 
 ## Register, download, and prepare archives
 
@@ -70,4 +82,54 @@ Heading is in degrees, with `0` pointing north/up.
 python3 scripts/plot_sample.py /path/to/OpenCVL \
   --ground-image 000023_uniform_2022-05-18T07:05:25.907107Z.png \
   --output ground_aerial_gt.png
+```
+
+## Download your own Mapillary imagery
+
+Please see the [Python code](mapillary_tools/mapillary_downloader.py) 
+and [Jupyer Notebook](mapillary_tools/mapillary_downloader_nb.ipynb) 
+for this in the accompanying `mapillary_tools`.
+
+
+## Correct your own Mapillary imagery
+We have provided implementation of our pose correction pipeline in 
+accompanying Mapillary Tools. See the corresponding [README](mapillary_tools/README.md).
+
+## Acknowledgements
+
+OpenCVL is developed by researchers from:
+
+- École Polytechnique Fédérale de Lausanne (EPFL)
+- Delft University of Technology (TU Delft)
+- Southern University of Science and Technology (SUSTech)
+- Zenseact
+
+---
+
+## License
+
+All data sources in OpenCVL and this toolkit are generally open-source and 
+have permissible licenses. Please find overview in the accompanying [LICENSE](LICENSE) and [NOTICE](NOTICE.md).
+
+## Contact
+Zimin Xia (zimin.xia at epfl dot ch)
+Mubariz Zaffar (m.zaffar at tudelft dot nl)
+Julian F. P. Kooij (j.f.p.kooij at tudelft dot nl)
+
+For questions related to aerial imagery and dataset usage
+please contact Zimin at first, for the mapillary pose correction
+Mubariz at first, and for other generic questions, please contact
+any of us.
+
+## Citation
+
+If you use OpenCVL in your research, please cite:
+
+```
+@inproceedings{opencvl2026,
+  title = {OpenCVL: An Open, Diverse, and Large-Scale Dataset for Fine-Grained Cross-View Localization},
+  author = {Xia, Zimin and Zaffar, Mubariz and Fu, Junsheng and Alahi, Alexandre and Kooij, Julian F. P.},
+  booktitle = {European Conference on Computer Vision},
+  year = {2026}
+}
 ```
