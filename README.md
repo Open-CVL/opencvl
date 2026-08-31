@@ -7,6 +7,18 @@ and visualizing the OpenCVL cross-view localization dataset. See the correpondin
 Tools related to Mapillary downloading and correction are also provided in `mapillary_tools/`. 
 See the corresponding [README](mapillary_tools/README.md).
 
+## OpenCVL overview
+
+<p align="center">
+  <a href="media/opencvl-overview-1080p.mp4">
+    <img src="media/opencvl-overview-poster.jpg" alt="OpenCVL project overview video" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <a href="media/opencvl-overview-1080p.mp4"><strong>Watch the OpenCVL overview video</strong></a>
+</p>
+
 ## Features
 
 This repository provides tools for:
