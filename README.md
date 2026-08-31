@@ -1,10 +1,14 @@
 # OpenCVL Devkit
+This codebase supports our ECCV'26 Spotlight [paper](https://arxiv.org/abs/2608.25274): OpenCVL: An Open, Diverse, and Large-Scale
+Dataset for Fine-Grained Cross-View Localization. See the [project webpage](https://open-cvl.github.io/) for an overview.
 
-OpenCVL Devkit provides Python tools for preparing, splitting, watermarking,
-and visualizing the OpenCVL cross-view localization dataset. See the correponding
+OpenCVL Devkit has two key objectives:
+
+- It provides Python tools for preparing, splitting, watermarking,
+and visualizing the OpenCVL cross-view localization dataset. See the corresponding
 `opencvl_tools/`. 
 
-Tools related to Mapillary downloading and correction are also provided in `mapillary_tools/`. 
+- Tools related to Mapillary downloading and correction are provided in `mapillary_tools/`. 
 See the corresponding [README](mapillary_tools/README.md).
 
 ## OpenCVL overview
